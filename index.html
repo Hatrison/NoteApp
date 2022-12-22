@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Note App</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container"><h1>Welcome to Note App!</h1></div>
+    </header>
+    <main class="main">
+      <div class="container">
+        <div class="main__container">
+          <div class="note">
+            <div class="note__header-thumb">
+              <p class="note__title">Title</p>
+              <ul class="note__btn-list">
+                <li class="note__btn-list-item">
+                  <button class="note__btn note__btn_edit">
+                    <svg class="note__icon note__icon_edit">
+                      <use href="./svg/symbol-defs.svg#icon-edit"></use>
+                    </svg>
+                  </button>
+                </li>
+                <li class="note__btn-list-item">
+                  <button class="note__btn note__btn_delete">
+                    <svg class="note__icon note__icon_delete">
+                      <use href="./svg/symbol-defs.svg#icon-delete"></use>
+                    </svg>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <button type="button" class="create-btn">+</button>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__info-block">
+        <ul class="footer__info-list">
+          <li class="footer__info-item">
+            <a
+              href="https://github.com/Hatrison"
+              class="footer__link"
+              target="_blank"
+            >
+              <svg class="footer__icon footer__icon_github">
+                <use href="./svg/symbol-defs.svg#icon-github"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="footer__info-item">
+            <a
+              href="https://t.me/sol_n_tse"
+              class="footer__link"
+              target="_blank"
+            >
+              <svg class="footer__icon footer__icon_telegram">
+                <use href="./svg/symbol-defs.svg#icon-telegram"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+        <a href="mailto:vadimulanovskiy@gmail.com" class="footer__email">
+          Write to me
+        </a>
+      </div>
+      <p class="footer__text">Created by Vadim Ulanovskiy</p>
+    </footer>
+    <script src="./js/main.js" type="module"></script>
+  </body>
+</html>
