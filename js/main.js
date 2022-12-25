@@ -76,8 +76,8 @@ function editNote(target) {
       noteTitleParagraph.innerText = value || "Title";
       arrayOfNotes[index].title = value || "Title";
     } else if (target === noteBodyTextarea) {
-      noteBodyParagraph.innerText = value || "Title";
-      arrayOfNotes[index].description = value || "Title";
+      noteBodyParagraph.innerText = value || "Your note";
+      arrayOfNotes[index].description = value || "Your note";
     }
     saveToLocalStorage();
   }
