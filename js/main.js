@@ -73,11 +73,11 @@ function editNote(target) {
     const value = target.value;
     const index = arrayOfNotes.findIndex(({ id }) => id === Number(noteId));
     if (target === noteTitleTextarea) {
-      noteTitleParagraph.innerText = value;
-      arrayOfNotes[index].title = value;
+      noteTitleParagraph.innerText = value || "Title";
+      arrayOfNotes[index].title = value || "Title";
     } else if (target === noteBodyTextarea) {
-      noteBodyParagraph.innerText = value;
-      arrayOfNotes[index].description = value;
+      noteBodyParagraph.innerText = value || "Title";
+      arrayOfNotes[index].description = value || "Title";
     }
     saveToLocalStorage();
   }
