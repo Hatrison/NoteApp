@@ -46,35 +46,52 @@ function deleteNote(target) {
 }
 
 function editNote(target) {
-  const id = getClosestNote(target).id;
+  const noteId = getClosestNote(target).id;
   const noteTitleParagraph = document.querySelector(
-    `.note[id="${id}"] .note__title`
+    `.note[id="${noteId}"] .note__title`
   );
   const noteTitleTextarea = document.querySelector(
-    `.note[id="${id}"] .note__title_text`
+    `.note[id="${noteId}"] .note__title_text`
   );
   const noteBodyParagraph = document.querySelector(
-    `.note[id="${id}"] .note__main-text`
+    `.note[id="${noteId}"] .note__main-text`
   );
   const noteBodyTextarea = document.querySelector(
-    `.note[id="${id}"] .note__main-text_text`
+    `.note[id="${noteId}"] .note__main-text_text`
   );
 
   toggleHidden(noteTitleParagraph);
   toggleHidden(noteTitleTextarea);
   toggleHidden(noteBodyParagraph);
   toggleHidden(noteBodyTextarea);
+
+  noteTitleTextarea.addEventListener("input", onInput);
+  noteBodyTextarea.addEventListener("input", onInput);
+
+  function onInput(event) {
+    const target = event.target;
+    const value = target.value;
+    const index = arrayOfNotes.findIndex(({ id }) => id === Number(noteId));
+    if (target === noteTitleTextarea) {
+      noteTitleParagraph.innerText = value;
+      arrayOfNotes[index].title = value;
+    } else if (target === noteBodyTextarea) {
+      noteBodyParagraph.innerText = value;
+      arrayOfNotes[index].description = value;
+    }
+    saveToLocalStorage();
+  }
 }
 
-function renderNote({ id }) {
+function renderNote({ id, title, description }) {
   const markup = `<div class="note" id="${id}">
             <div class="note__header-thumb">
-              <p class="note__title">Title</p>
+              <p class="note__title">${title}</p>
               <textarea
                 name=""
-                class="note__title_text hidden"
+                class="note__title_text textarea hidden"
                 placeholder="Title"
-              ></textarea>
+              >${title}</textarea>
               <ul class="note__btn-list">
                 <li class="note__btn-list-item">
                   <button class="note__btn note__btn_edit" id="js-edit-btn">
@@ -101,12 +118,12 @@ function renderNote({ id }) {
                 </li>
               </ul>
             </div>
-            <p class="note__main-text">Your note</p>
+            <p class="note__main-text">${description}</p>
             <textarea
               name=""
-              class="note__main-text_text hidden"
+              class="note__main-text_text textarea hidden"
               placeholder="Your note"
-            ></textarea>
+            >${description}</textarea>
           </div>`;
 
   createBtn.insertAdjacentHTML("beforebegin", markup);
